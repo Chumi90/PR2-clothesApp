@@ -1,0 +1,10 @@
+# Include all the documents that don't upload to GITHUB
+
+package.json
+package-lock.json
+.env
+
+# Node services
+
+node_modules
+
