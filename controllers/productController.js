@@ -22,10 +22,16 @@ const ProductCreate = {
         const product = await Product.create({...req.body, completed: false }); // sustituir ...req.body por los datos obtenidos del HTML
         res.redirect('/showNewProduct');
     } catch (error) {
-        console.error(error);
-        res
-            .status(500)
-            .send({ message: "There was a problem trying to create a task" });
+        if((req.body.price).indexOf(",") !== (-1)){
+          res
+            .status(200)
+            .send({ message: "There was a problem with the price yo sould use '.', to the decimals and coudn't have characters"});
+        }else{
+          console.error(error);
+          res
+              .status(500)
+              .send({ message: "There was a problem trying to create a the product" });
+        }
     }
   },
   //Create a route to show a product by his ID
