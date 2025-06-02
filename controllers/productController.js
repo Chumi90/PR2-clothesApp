@@ -64,9 +64,9 @@ const ProductCreate = {
   async product(req,res){
         try{
           const recibedProduct = await Product.findById(`${req.params._id}`);
-          console.log(recibedProduct)
-          console.log(getProductCards(recibedProduct))//error aquí
-          res.send(baseHTML+getProductCards(recibedProduct)+buttonBack+finalHTML);
+          console.log("estas aquí")
+          //getProductCards(recibedProduct)//error aquí
+          res.send(baseHTML+buttonBack+finalHTML);//comentada la linea anterior funciona
         }catch{
           console.error(error);
             res.status(500).send({ message: "There was a problem trying to create a task" });

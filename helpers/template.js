@@ -41,7 +41,7 @@ function getProductCards(recibedProducts) {
     html += `
       <div class="product-card">
         <h2>${recibedProduct.category}</h2>
-          <img src="${recibedProduct.image}" alt="${recibedProduct.product}">
+          <img src="${recibedProduct.image}" alt="${recibedProduct.product}" width="200">
           <h3>${recibedProduct.product}</h3>
           <p>${recibedProduct.description}</p>
           <p>${recibedProduct.price} €</p>
@@ -57,12 +57,11 @@ function getProductCards(recibedProducts) {
 //Show a all product created
 function getProductCards(recibedProducts) {
   let html = '';
-  
   for (let recibedProduct of recibedProducts) {
     html += `
       <div class="product-card">
         <h2>${recibedProduct.category}</h2>
-          <img src="${recibedProduct.image}" alt="${recibedProduct.product}">
+          <img src="${recibedProduct.image}" alt="${recibedProduct.product}" width="200">
           <h3>${recibedProduct.product}</h3>
           <p>${recibedProduct.description}</p>
           <p>${recibedProduct.price} €</p>
