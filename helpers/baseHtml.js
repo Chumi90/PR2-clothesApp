@@ -81,4 +81,13 @@ const buttonBack=`
     </a>
     
 `
-module.exports={baseHTML,finalHTML,formNewProduct,viewCreatedProduct,buttonBackCreate,buttonBack};
+const buttonBackhome=`
+    <a href="/dashboard/new">
+        <button type="submit">Crear nuevo producto</button>
+    </a>
+    <a href="/dashboard">
+        <button>Volver al dashboard</button>
+    </a>
+    
+`
+module.exports={baseHTML,finalHTML,formNewProduct,viewCreatedProduct,buttonBackCreate,buttonBack,buttonBackhome};

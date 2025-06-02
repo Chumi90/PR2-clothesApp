@@ -1,8 +1,8 @@
 //Product Controllers
 
 const Product = require('../models/Product.js')
-const {baseHTML,finalHTML,formNewProduct,viewCreatedProduct,buttonBackCreate,buttonBack}=require('../helpers/baseHtml.js')
-const {NewProductShow,getProductCards}=require('../helpers/template.js')
+const {baseHTML,finalHTML,formNewProduct,viewCreatedProduct,buttonBackCreate,buttonBack,buttonBackhome}=require('../helpers/baseHtml.js')
+const {NewProductShow,getProductCards,getProductCard}=require('../helpers/template.js')
 
 let productCreate="";
 
@@ -64,9 +64,8 @@ const ProductCreate = {
   async product(req,res){
         try{
           const recibedProduct = await Product.findById(`${req.params._id}`);
-          console.log("estas aquí")
-          //getProductCards(recibedProduct)//error aquí
-          res.send(baseHTML+buttonBack+finalHTML);//comentada la linea anterior funciona
+          //error aquí
+          res.send(baseHTML+getProductCard(recibedProduct)+buttonBackhome+finalHTML);//comentada la linea anterior funciona
         }catch{
           console.error(error);
             res.status(500).send({ message: "There was a problem trying to create a task" });
