@@ -23,6 +23,7 @@ const formNewProduct=`
                 <li>
                     <label for="sizeClothes">Introduce talla: </label>
                     <select name="size" id="sizeClothes">
+                        <option value="">--Please choose a size--</option>
                         <option value="xs">XS</option>
                         <option value="s">S</option>
                         <option value="m">M</option>
