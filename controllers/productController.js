@@ -22,7 +22,7 @@ const ProductCreate = {
   //Create a route to reate a new product and upload the product in Mongo db Atlass
   async createProduct(req,res){
      try {
-        const product = await Product.create({...req.body, completed: false }); // sustituir ...req.body por los datos obtenidos del HTML
+        const product = await Product.create({...req.body}); // sustituir ...req.body por los datos obtenidos del HTML
         productCreate=req.body;
         res.redirect('/dashboard/created');
     } catch (error) {
@@ -49,7 +49,7 @@ const ProductCreate = {
         res.status(500).send({ message: "There was a problem trying to create a task" });
     }
   },
-  //Show al products
+  //Show all products
   async products(req,res){
       try{
         const recibedProducts = await Product.find().sort({"category":1}); //Require the product and Order by Category 
@@ -59,7 +59,19 @@ const ProductCreate = {
           res.status(500).send({ message: "There was a problem trying to create a task" });
       }
     },
-}
 
+//Show one product
+  async product(req,res){
+        try{
+          const recibedProduct = await Product.findById(`${req.params._id}`);
+          console.log(recibedProduct)
+          console.log(getProductCards(recibedProduct))//error aquí
+          res.send(baseHTML+getProductCards(recibedProduct)+buttonBack+finalHTML);
+        }catch{
+          console.error(error);
+            res.status(500).send({ message: "There was a problem trying to create a task" });
+        }
+      },
+}
 
 module.exports = ProductCreate;

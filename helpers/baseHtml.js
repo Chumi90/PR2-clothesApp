@@ -81,5 +81,4 @@ const buttonBack=`
     </a>
     
 `
-
 module.exports={baseHTML,finalHTML,formNewProduct,viewCreatedProduct,buttonBackCreate,buttonBack};
