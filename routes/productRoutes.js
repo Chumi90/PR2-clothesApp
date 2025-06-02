@@ -5,8 +5,9 @@ const router = express.Router();
 
 const ProductController = require('../controllers/productController.js');
 
-router.get('/showNewProduct', ProductController.showNewProduct);
-router.post('/createProduct', ProductController.createProduct);
-router.get('/showProductById', ProductController.showProductById);
+router.get('/dashboard/new', ProductController.newProduct);
+router.post('/dashboard', ProductController.createProduct);
+router.get('/dashboard/created', ProductController.showProductCreated);
+router.get('/dashboard', ProductController.products)
 
 module.exports = router;

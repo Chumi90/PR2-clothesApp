@@ -96,4 +96,22 @@ En la siguiente función se crea la estructura de los usuarios
 - category:{type: String, required: true}
 
 # Creación de rutas
-En este punto tendremos que realizar la creación de rutas para poder realizar modificaciones dentro de la base de datos
+En este punto tendremos que realizar la creación de rutas para poder realizar modificaciones dentro de la base de datos.
+- Primero has de crear la ruta /dashboard/new , dentro de esta ruta tendrás que utilizar el método GET tendrás el formulario para crear un producto.
+    - Crea 2 botones
+        - Primer botón, te devolverá a la ruta /showNewProduct para que crees un nuevo producto.
+        - Segundo botón, te devolverá a la ruta /showProducts para que puedas ver todos los productos.
+
+- Segundo has de crear la ruta /dashboard , dentro de esta ruta se enviará por el método POST para enviar los datos a la BBDD.
+
+- Tercero has de crear la ruta /showProductCreated , donde devolverás el producto creado.
+    - Crea 2 botones
+        - Primer botón, te devolverá a la ruta /showNewProduct para que crees un nuevo producto.
+        - Segundo botón, te devolverá a la ruta /showProducts para que puedas ver todos los productos.
+        - Nota: aprovecha los datos obtenidos para no hacer solicitudes a la bd de Mongo Atlass (las solicitudes cuestan dinero).
+
+- Cuarto has de crear la ruta /products , dentro de esta ruta se devolverán todos los productos creados.
+    - Crea 2 botones
+        - Primer botón, te devolverá a la ruta /showNewProduct para que crees un nuevo producto.
+        - Segundo botón, te devolverá a la ruta /showProducts para actualizar los productos.
+
