@@ -9,6 +9,7 @@ function NewProductShow(productCreate) {
           <h2>Producto: ${productCreate.product}<h2>
           <h3>Descripción: </h3>
           <p>${productCreate.description}</p>
+          <p>Talla: ${recibedProducts.size}</p>
           <p>Precio: ${productCreate.price} €</p>
         </div>
       `
