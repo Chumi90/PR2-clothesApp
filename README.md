@@ -99,19 +99,31 @@ En la siguiente función se crea la estructura de los usuarios
 En este punto tendremos que realizar la creación de rutas para poder realizar modificaciones dentro de la base de datos.
 - Primero has de crear la ruta /dashboard/new , dentro de esta ruta tendrás que utilizar el método GET tendrás el formulario para crear un producto.
     - Crea 2 botones
-        - Primer botón, te devolverá a la ruta /showNewProduct para que crees un nuevo producto.
+        - Primer botón, te devolverá a la ruta /dashboard con metodo POST para que crees un nuevo producto.
         - Segundo botón, te devolverá a la ruta /showProducts para que puedas ver todos los productos.
 
 - Segundo has de crear la ruta /dashboard , dentro de esta ruta se enviará por el método POST para enviar los datos a la BBDD.
 
-- Tercero has de crear la ruta /showProductCreated , donde devolverás el producto creado.
+- Tercero has de crear la ruta /dashboard/created , donde devolverás el producto creado.
     - Crea 2 botones
-        - Primer botón, te devolverá a la ruta /showNewProduct para que crees un nuevo producto.
-        - Segundo botón, te devolverá a la ruta /showProducts para que puedas ver todos los productos.
+        - Primer botón, te devolverá a la ruta /dashboard/new con metodo GET  para que crees un nuevo producto.
+        - Segundo botón, te devolverá a la ruta /dashboard con metodo GET para que puedas ver todos los productos.
         - Nota: aprovecha los datos obtenidos para no hacer solicitudes a la bd de Mongo Atlass (las solicitudes cuestan dinero).
 
 - Cuarto has de crear la ruta /products , dentro de esta ruta se devolverán todos los productos creados.
     - Crea 2 botones
-        - Primer botón, te devolverá a la ruta /showNewProduct para que crees un nuevo producto.
-        - Segundo botón, te devolverá a la ruta /showProducts para actualizar los productos.
+        - Primer botón, te devolverá a la ruta /dashboard/new con metodo GET para que crees un nuevo producto.
+        - Segundo botón, te devolverá a la ruta /dashboard con metodo GET para actualizar los productos.
 
+- Quinto has de crear la ruta /dashboard/:_id/edit: con el metodo GET para que te devuelva el formulario y editar el producto
+    Nota: tienes que crear el metodo  [Method Override](https://www.npmjs.com/package/method-override)
+    - Primero instala las dependecias de Override npm install method-override
+    - Segundo debes requerir en index.js
+    - Tercero usa dentro del index.js app.use(methodOverride('X-HTTP-Method-Override')) para actualizar y borrar la información.
+    - Quinto crea las rutas get y post para obtener los datos y enviar las actualizaciones realizadas a la Base de datos de Mongo DB.
+
+- Sexto has de crear la ruta /dashboard/:_id/delete con el metodo GET para poder realizar el borrado de un dato.
+    - Usa la const product = await Product.findByIdAndDelete(req.params._id); para elimiar el dato.
+
+- Septimo has de crear la página principal donde deberás obtener todos los productos puedes utilizar las funciones creadas para el Dashboard
+- Octavo has de crear la página principal donde deberás obtener el producto seleccionado puedes utilizar las funciones creadas para el Dashboard

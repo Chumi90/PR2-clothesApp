@@ -88,6 +88,6 @@ const buttonBackhome=`
     <a href="/dashboard">
         <button>Volver al dashboard</button>
     </a>
-    
 `
+
 module.exports={baseHTML,finalHTML,formNewProduct,viewCreatedProduct,buttonBackCreate,buttonBack,buttonBackhome};
