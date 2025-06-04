@@ -2,7 +2,7 @@
 
 const Product = require('../models/Product.js')
 const {baseHTML,finalHTML,formNewProduct,viewCreatedProduct,buttonBackCreate,buttonBack,buttonBackhome}=require('../helpers/baseHtml.js')
-const {NewProductShow,getProductCards,getProductCard,formEditProduct,getProductCardClient,getProductCardsClient}=require('../helpers/template.js')
+const {showProductCreated,getProductCards,getProductCard,formEditProduct,getProductCardClient,getProductCardsClient}=require('../helpers/template.js')
 
 let productCreate="";
 
@@ -22,7 +22,7 @@ const ProductCreate = {
   //Create a route to create a new product and upload the product in Mongo db Atlass
   async createProduct(req,res){
      try {
-        await Product.create({...req.body});
+        const product =await Product.create({...req.body});
         productCreate=req.body;
         res.redirect('/dashboard/created');
     } catch (error) {
@@ -42,7 +42,7 @@ const ProductCreate = {
   //Create a route to show the product created
   async showProductCreated(req,res){
     try{
-      res.send(baseHTML+viewCreatedProduct+NewProductShow(productCreate)+buttonBackCreate+finalHTML);
+      res.send(baseHTML+viewCreatedProduct+showProductCreated(productCreate)+buttonBackCreate+finalHTML);
       productCreate="";
     }catch(error){
       console.error(error);

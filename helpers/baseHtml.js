@@ -40,13 +40,13 @@ const formNewProduct=`
                     <label for="sizeClothes">Introduce talla: </label>
                     <select name="size" id="sizeClothes">
                         <option value="">--Please choose a size--</option>
-                        <option value="xs">XS</option>
-                        <option value="s">S</option>
-                        <option value="m">M</option>
-                        <option value="l">L</option>
-                        <option value="xl">XL</option>
-                        <option value="xxl">XXL</option>
-                        <option value="xxl">XXL</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                        <option value="XXXL">XXXL</option>
                     </select>
                 </li>
                 <li>

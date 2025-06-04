@@ -1,20 +1,20 @@
 //Templates for the interface
-
-//Show a new product created
-function NewProductShow(productCreate) {
-    return`
-        <div class="product-card">
-          <h2>${productCreate.category}</h2>
-          <img src="${productCreate.image}" alt="${productCreate.product}" width="200">
-          <h2>Producto: ${productCreate.product}<h2>
+//
+function showProductCreated(recibedProducts) {
+  let html = '';
+    html += `
+      <div class="product-card">
+        <h2>${recibedProducts.category}</h2>
+          <img src="${recibedProducts.image}" alt="${recibedProducts.product}" width="200">
+          <h2>Producto: ${recibedProducts.product}</h2>
           <h3>Descripción: </h3>
-          <p>${productCreate.description}</p>
+          <p>${recibedProducts.description}</p>
           <p>Talla: ${recibedProducts.size}</p>
-          <p>Precio: ${productCreate.price} €</p>
-        </div>
-      `
+          <p>Precio: ${recibedProducts.price} €</p>
+      </div>
+    `;
+  return html;
 }
-
 //Show a all product created
 function getProductCards(recibedProducts) {
   let html = '';
@@ -84,7 +84,7 @@ function formEditProduct(recibedProduct){
                         <option value="L">L</option>
                         <option value="XL">XL</option>
                         <option value="XXL">XXL</option>
-                        <option value="XXL">XXL</option>
+                        <option value="XXXL">XXXL</option>
                     </select>
                 </li>
                 <li>
@@ -138,4 +138,4 @@ function getProductCardClient(recibedProducts) {
     `;
   return html;
 }
-module.exports={NewProductShow,getProductCards,getProductCard,formEditProduct,getProductCardsClient,getProductCardClient}
+module.exports={showProductCreated,getProductCards,getProductCard,formEditProduct,getProductCardsClient,getProductCardClient}
