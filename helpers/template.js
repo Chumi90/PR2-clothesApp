@@ -166,12 +166,15 @@ function oneProductObject(category,data){
   return oneCategory;
 }
 
+
+const express = require('express');
+const newrouter = express.Router();
 function category(unicProducts){
   //console.log(unicProducts);
   let varNavigate="";
   for (let route of unicProducts) {
-    varNavigate +=`
-      router.get('/${route}, ProductController.initial);
+    newrouter.get(`
+      /${route};
       `
   }
   //console.log(varNavigate); //Muestra todos los productos
