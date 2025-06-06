@@ -1,16 +1,23 @@
 //Product Controllers
 
-const Product = require('../models/Product.js')
-const {baseHTML,finalHTML,formNewProduct,viewCreatedProduct,buttonBackCreate,buttonBack,buttonBackhome}=require('../helpers/baseHtml.js')
-const {showProductCreated,getProductCards,getProductCard,formEditProduct,getProductCardClient,getProductCardsClient}=require('../helpers/template.js')
+const Product = require('../models/Product.js');
+const BaseHtml=require('../helpers/baseHtml.js');
+const {showProductCreated,getProductCards,
+  getProductCard,formEditProduct,getProductCardClient,
+  getProductCardsClient,navigationBarUser,oneProductObject,
+  category}=require('../helpers/template.js')
 
-let productCreate="";
 
+
+let productCreate='';
+let unicProducts='';//Create to Nav Bar
 const ProductCreate = {
+
+/*______________________________________________Dash Board__________________________________________________________________________*/
   //Create a route to create a form to create a new product
   async newProduct(req,res){
      try {
-        res.status(201).send(baseHTML+formNewProduct+finalHTML);
+        res.status(201).send(BaseHtml.baseHTML+BaseHtml.formNewProduct+BaseHtml.finalHTML);
     } catch (error) {
         console.error(error);
         res
@@ -42,7 +49,7 @@ const ProductCreate = {
   //Create a route to show the product created
   async showProductCreated(req,res){
     try{
-      res.send(baseHTML+viewCreatedProduct+showProductCreated(productCreate)+buttonBackCreate+finalHTML);
+      res.send(BaseHtml.baseHTML+BaseHtml.viewCreatedProduct+showProductCreated(productCreate)+BaseHtml.buttonBackCreate+BaseHtml.finalHTML);
       productCreate="";
     }catch(error){
       console.error(error);
@@ -52,8 +59,11 @@ const ProductCreate = {
   //Show all products
   async products(req,res){
       try{
-        const recibedProducts = await Product.find().sort({"category":1}); //Require the product and Order by Category 
-        res.send(baseHTML+buttonBack+getProductCards(recibedProducts)+finalHTML);
+        const recibedProducts = await Product.find().sort({"category":1}); //Require the product and Order by Category
+        let ProductCategory=[...new Set(recibedProducts.map(objeto => objeto.category))]
+        unicProducts=ProductCategory;
+        let oneProduct = oneProductObject(ProductCategory,recibedProducts);
+        res.send(BaseHtml.baseHTML+navigationBarUser(recibedProducts)+BaseHtml.buttonBack+getProductCards(oneProduct)+BaseHtml.finalHTML);
       }catch(error){
         console.error(error);
           res.status(500).send({ message: "There was a problem trying to create a Product" });
@@ -64,7 +74,7 @@ const ProductCreate = {
   async product(req,res){
         try{
           const recibedProduct = await Product.findById(`${req.params._id}`);
-          res.send(baseHTML+getProductCard(recibedProduct)+buttonBackhome+finalHTML);
+          res.send(BaseHtml.baseHTML+getProductCard(recibedProduct)+BaseHtml.buttonBackhome+BaseHtml.finalHTML);
         }catch(error){
           console.error(error);
             res.status(500).send({ message: "There was a problem trying to create a Product" });
@@ -74,7 +84,7 @@ const ProductCreate = {
   async productModify(req,res){
       try{
           const recibedProduct = await Product.findById(`${req.params._id}`);
-          res.send(baseHTML+formEditProduct(recibedProduct)+finalHTML);
+          res.send(BaseHtml.baseHTML+formEditProduct(recibedProduct)+BaseHtml.finalHTML);
       }catch (error){
         console.error(error);
               res.status(500).send({ message: "There was a problem trying to create a Product Modify" });
@@ -102,21 +112,42 @@ const ProductCreate = {
               res.status(500).send({ message: "There was a problem trying to create a Product Modify" });
       }
   },
-  //Show all products to de user
+
+
+/*______________________________________________View Clients__________________________________________________________________________*/
+  //Show all products to clients
   async productsClients(req,res){
       try{
-        const recibedProducts = await Product.find().sort({"category":1}); //Require the product and Order by Category 
-        res.send(baseHTML+getProductCardsClient(recibedProducts)+finalHTML);
+        const recibedProducts = await Product.find().sort({"category":1}); //Require the product and Order by Category
+        res.send(BaseHtml.baseHTMLProducts+navigationBarUser(recibedProducts)+getProductCardsClient(recibedProducts)+BaseHtml.finalHTML);
+        
       }catch(error){
         console.error(error);
           res.status(500).send({ message: "There was a problem trying to create a Product" });
       }
     },
-//Show detail products to de user
+//Show detail products to clients
   async productsDetailClients(req,res){
       try{
           const recibedProduct = await Product.findById(`${req.params._id}`);
-          res.send(baseHTML+getProductCardClient(recibedProduct)+finalHTML);
+          res.send(BaseHtml.baseHTMLProducts+navigationBarUser(null)+getProductCardClient(recibedProduct)+BaseHtml.finalHTML);
+        }catch(error){
+          console.error(error);
+            res.status(500).send({ message: "There was a problem trying to create a Product" });
+        }
+    },
+
+
+
+/*______________________________________________Initial__________________________________________________________________________*/
+async initial(req,res){
+      try{
+          const recibedProducts = await Product.find();
+          let ProductCategory=[...new Set(recibedProducts.map(objeto => objeto.category))]
+          unicProducts=ProductCategory;
+          category(unicProducts);
+          let oneProduct = oneProductObject(ProductCategory,recibedProducts);
+          res.send(BaseHtml.baseHTMLProducts+navigationBarUser(recibedProducts)+getProductCardsClient(oneProduct)+BaseHtml.finalHTML);
         }catch(error){
           console.error(error);
             res.status(500).send({ message: "There was a problem trying to create a Product" });
@@ -124,5 +155,5 @@ const ProductCreate = {
     },
 }
 
-
 module.exports = ProductCreate;
+

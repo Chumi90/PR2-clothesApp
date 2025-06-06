@@ -138,4 +138,43 @@ function getProductCardClient(recibedProducts) {
     `;
   return html;
 }
-module.exports={showProductCreated,getProductCards,getProductCard,formEditProduct,getProductCardsClient,getProductCardClient}
+
+const {navigationBarhtmlUser}=require('../helpers/getNavBar.js');
+//Navigation Bar for Category
+function navigationBarUser (recibedProducts){
+  if(!recibedProducts){
+  }else{
+  unicProducts= [...new Set(recibedProducts.map(objeto => objeto.category))];
+  }
+  return navigationBarhtmlUser(unicProducts);
+}
+//Trae un solo producto de cada Categoría
+function oneProductObject(category,data){
+  let oneCategory=[];
+  let limitCategory=0;
+  for (let i=0;i<data.length;i++){
+    for (let x=0;x<category.length;x++){
+      if(category[i]==data[x].category){
+        if (limitCategory==0){
+          oneCategory.push(data[x]);
+          limitCategory=1;
+        }
+      }
+    }
+    limitCategory=0;
+  }
+  return oneCategory;
+}
+
+function category(unicProducts){
+  //console.log(unicProducts);
+  let varNavigate="";
+  for (let route of unicProducts) {
+    varNavigate +=`
+      router.get('/${route}, ProductController.initial);
+      `
+  }
+  //console.log(varNavigate); //Muestra todos los productos
+  return varNavigate;
+}
+module.exports={showProductCreated,getProductCards,getProductCard,formEditProduct,getProductCardsClient,getProductCardClient,navigationBarUser,oneProductObject,category}

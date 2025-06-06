@@ -1,9 +1,7 @@
 //Routes defines
 
 const express = require('express');
-
 const router = express.Router();
-
 const ProductController = require('../controllers/productController.js');
 
 //DashBoard
@@ -21,5 +19,7 @@ router.get('/dashboard/:_id/delete', ProductController.deleteProduct);//Muestra 
 router.get('/products', ProductController.productsClients); //Muestra todos los productos
 router.get('/products/:_id', ProductController.productsDetailClients); //Muestra todos los productos
 
+router.get('/', ProductController.initial); //Muestra todos los productos
+//Navigation products
 
 module.exports = router;
