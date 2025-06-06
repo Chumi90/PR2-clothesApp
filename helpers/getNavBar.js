@@ -22,7 +22,7 @@ function navigationBarhtmlUser(product){
     for (let category of product) {
         varNavigate +=`
             <a href="/products/${category}">
-            <li class="navVar">${category}</li>
+            <li class="navVar" value="${category}">${category}</li>
             </a>
         `
     }

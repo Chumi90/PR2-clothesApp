@@ -19,7 +19,9 @@ router.get('/dashboard/:_id/delete', ProductController.deleteProduct);//Muestra 
 router.get('/products', ProductController.productsClients); //Muestra todos los productos
 router.get('/products/:_id', ProductController.productsDetailClients); //Muestra todos los productos
 
+
 router.get('/', ProductController.initial); //Muestra todos los productos
 //Navigation products
+router.get('/products/:category', ProductController.productsCategory); //Muestra todos los productos
 
 module.exports = router;

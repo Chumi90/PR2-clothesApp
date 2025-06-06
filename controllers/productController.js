@@ -4,8 +4,7 @@ const Product = require('../models/Product.js');
 const BaseHtml=require('../helpers/baseHtml.js');
 const {showProductCreated,getProductCards,
   getProductCard,formEditProduct,getProductCardClient,
-  getProductCardsClient,navigationBarUser,oneProductObject,
-  category}=require('../helpers/template.js')
+  getProductCardsClient,navigationBarUser,oneProductObject}=require('../helpers/template.js')
 
 
 
@@ -129,6 +128,7 @@ const ProductCreate = {
 //Show detail products to clients
   async productsDetailClients(req,res){
       try{
+         console.log ()
           const recibedProduct = await Product.findById(`${req.params._id}`);
           res.send(BaseHtml.baseHTMLProducts+navigationBarUser(null)+getProductCardClient(recibedProduct)+BaseHtml.finalHTML);
         }catch(error){
@@ -136,16 +136,26 @@ const ProductCreate = {
             res.status(500).send({ message: "There was a problem trying to create a Product" });
         }
     },
-
+//Show product by category
+  async productsCategory(req,res){
+      try{
+        console.log("fuciona");
+        const recibedProduct = await Product.findById({category:`${req.params.category}`});
+        // const recibedProducts = await Product.find().sort({"category":1}); //Require the product and Order by Category
+        // res.send(BaseHtml.baseHTMLProducts+navigationBarUser(recibedProducts)+getProductCardsClient(recibedProducts)+BaseHtml.finalHTML);
+      }catch(error){
+        console.error(error);
+          res.status(500).send({ message: "There was a problem trying to product by category" });
+      }
+    },
 
 
 /*______________________________________________Initial__________________________________________________________________________*/
 async initial(req,res){
       try{
-          const recibedProducts = await Product.find();
+          const recibedProducts = await Product.find().sort({"category":1});
           let ProductCategory=[...new Set(recibedProducts.map(objeto => objeto.category))]
           unicProducts=ProductCategory;
-          category(unicProducts);
           let oneProduct = oneProductObject(ProductCategory,recibedProducts);
           res.send(BaseHtml.baseHTMLProducts+navigationBarUser(recibedProducts)+getProductCardsClient(oneProduct)+BaseHtml.finalHTML);
         }catch(error){
