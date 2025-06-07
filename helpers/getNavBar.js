@@ -18,7 +18,7 @@ function navigationBarhtmlDashboard(product){
     `
     for (let category of product) {
         varNavigate +=`
-            <a href="/dashboard/${category}">
+            <a href="/dashboard/${category}/category">
             <li class="navVar" value="${category}">${category}</li>
             </a>
         `
@@ -46,8 +46,9 @@ function navigationBarhtmlUser(product){
         </nav>
     `
     for (let category of product) {
+        let ruta=`/products/${category}/category`;
         varNavigate +=`
-            <a href="/products/${category}">
+            <a href="${ruta}">
             <li class="navVar" value="${category}">${category}</li>
             </a>
         `

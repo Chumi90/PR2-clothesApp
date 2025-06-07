@@ -61,9 +61,9 @@ const ProductCreate = {
       try{
         const recibedProducts = await Product.find().sort({"category":1}); //Require the product and Order by Category
         let ProductCategory=[...new Set(recibedProducts.map(objeto => objeto.category))]
-        unicProducts=ProductCategory;
+        unicProducts=recibedProducts;
         let oneProduct = oneProductObject(ProductCategory,recibedProducts);
-        res.send(BaseHtml.baseHTML+navigationBarDashboard(oneProduct)+BaseHtml.buttonBack+getProductCards(recibedProducts)+BaseHtml.finalHTML);
+        res.send(BaseHtml.baseHTML+navigationBarDashboard(unicProducts)+BaseHtml.buttonBack+getProductCards(oneProduct)+BaseHtml.finalHTML);
       }catch(error){
         console.error(error);
           res.status(500).send({ message: "There was a problem trying to create a Product" });
@@ -74,7 +74,8 @@ const ProductCreate = {
   async product(req,res){
         try{
           const recibedProduct = await Product.findById(`${req.params._id}`);
-          res.send(BaseHtml.baseHTML+getProductCard(recibedProduct)+BaseHtml.buttonBackhome+BaseHtml.finalHTML);
+          console.log(unicProducts)
+          res.send(BaseHtml.baseHTML+navigationBarDashboard(unicProducts)+getProductCard(recibedProduct)+BaseHtml.buttonBackhome+BaseHtml.finalHTML);
         }catch(error){
           console.error(error);
             res.status(500).send({ message: "There was a problem trying to create a Product" });
@@ -113,14 +114,22 @@ const ProductCreate = {
       }
   },
 
-
+//Show product by category
+  async productsCategoryDashboard(req,res){
+      try{
+        const recibedProducts = await Product.find({category:`${req.params.category}`});
+        res.send(BaseHtml.baseHTMLProducts+navigationBarDashboard(unicProducts)+getProductCards(recibedProducts)+BaseHtml.finalHTML);
+      }catch(error){
+        console.error(error);
+          res.status(500).send({ message: "There was a problem trying to product by category" });
+      }
+    },
 /*______________________________________________View Clients__________________________________________________________________________*/
   //Show all products to clients
   async productsClients(req,res){
       try{
         const recibedProducts = await Product.find().sort({"category":1}); //Require the product and Order by Category
         res.send(BaseHtml.baseHTMLProducts+navigationBarUser(recibedProducts)+getProductCardsClient(recibedProducts)+BaseHtml.finalHTML);
-        
       }catch(error){
         console.error(error);
           res.status(500).send({ message: "There was a problem trying to create a Product" });
@@ -129,21 +138,18 @@ const ProductCreate = {
 //Show detail products to clients
   async productsDetailClients(req,res){
       try{
-         console.log ()
           const recibedProduct = await Product.findById(`${req.params._id}`);
-          res.send(BaseHtml.baseHTMLProducts+navigationBarUser(null)+getProductCardClient(recibedProduct)+BaseHtml.finalHTML);
+          res.send(BaseHtml.baseHTMLProducts+navigationBarUser(unicProducts)+getProductCardClient(recibedProduct)+BaseHtml.finalHTML);
         }catch(error){
           console.error(error);
-            res.status(500).send({ message: "There was a problem trying to create a Product" });
+            res.status(500).send({ message: "There was a problem trying to create a Product of client" });
         }
     },
 //Show product by category
-  async productsCategory(req,res){
+  async productsCategoryClients(req,res){
       try{
-        console.log("fuciona");
-        const recibedProduct = await Product.findById({category:`${req.params.category}`});
-        // const recibedProducts = await Product.find().sort({"category":1}); //Require the product and Order by Category
-        // res.send(BaseHtml.baseHTMLProducts+navigationBarUser(recibedProducts)+getProductCardsClient(recibedProducts)+BaseHtml.finalHTML);
+        const recibedProducts = await Product.find({category:`${req.params.category}`});
+        res.send(BaseHtml.baseHTMLProducts+navigationBarUser(unicProducts)+getProductCardsClient(recibedProducts)+BaseHtml.finalHTML);
       }catch(error){
         console.error(error);
           res.status(500).send({ message: "There was a problem trying to product by category" });
@@ -156,7 +162,7 @@ async initial(req,res){
       try{
           const recibedProducts = await Product.find().sort({"category":1});
           let ProductCategory=[...new Set(recibedProducts.map(objeto => objeto.category))]
-          unicProducts=ProductCategory;
+          unicProducts=recibedProducts;
           let oneProduct = oneProductObject(ProductCategory,recibedProducts);
           res.send(BaseHtml.baseHTMLProducts+navigationBarUser(recibedProducts)+getProductCardsClient(oneProduct)+BaseHtml.finalHTML);
         }catch(error){
@@ -226,7 +232,6 @@ async deleteProductAPI(req,res){
       }
   },
 
-  
 }
 module.exports = ProductCreate;
 

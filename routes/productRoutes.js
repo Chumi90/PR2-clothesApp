@@ -2,7 +2,11 @@
 
 const express = require('express');
 const router = express.Router();
+const Product = require('../models/Product.js');
 const ProductController = require('../controllers/productController.js');
+
+let ProductCategory='';
+let rutas='';
 
 //DashBoard
 router.get('/dashboard/new', ProductController.newProduct);
@@ -14,15 +18,18 @@ router.get('/dashboard/:_id', ProductController.product); //devuelve el detalle 
 router.get('/dashboard/:_id/edit', ProductController.productModify);//Muestra el formulario
 router.post('/dashboard/:_id/edit', ProductController.productChanged); //Envía el formulario
 router.get('/dashboard/:_id/delete', ProductController.deleteProduct);//Muestra el formulario
+router.get('/dashboard/:category/category', ProductController.productsCategoryDashboard);//Muestra por categoria
 
-//Pagina principal de productos
+//Pagina principal de productos para clientes
 router.get('/products', ProductController.productsClients); //Muestra todos los productos
 router.get('/products/:_id', ProductController.productsDetailClients); //Muestra todos los productos
+router.get('/products/:category/category', ProductController.productsCategoryClients);//Muestra por categoria
 
 //Pagina inicial
 router.get('/', ProductController.initial); //Muestra todos los productos
 //Navigation products
-router.get('/products/:category', ProductController.productsCategory); //Muestra todos los productos
+// for(let navroute of ProductController.varNav)
+// router.get(`/products/${navroute}`, ProductController.productsCategory); //Muestra todos los productos
 
 /*___________________________________API-JSON___________________________________ */
 
