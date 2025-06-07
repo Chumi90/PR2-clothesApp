@@ -23,7 +23,9 @@ function showProductCreated(recibedProducts) {
 }
 //Show a all product created
 function getProductCards(recibedProducts) {
-  let html = '';
+  const html1 = '<div class="product-card" style="display: flex; justify-content: center;flex-wrap: wrap; width: 100%;" >';
+  const html2='</div>'
+  let html='';
   for (let recibedProduct of recibedProducts) {
     html += `
       <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px;border-radius: 5px; display: flex; flex-direction: row;">
@@ -38,10 +40,12 @@ function getProductCards(recibedProducts) {
       </div>
     `;
   }
-  return html;
+  return html1+html+html2;
 }
 
 function getProductCard(recibedProducts) {
+  const html1 = '<div class="product-card" style="display: flex; justify-content: center;flex-wrap: wrap; width: 100%;" >';
+  const html2='</div>'
   let html = '';
     html += `
       <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px;border-radius: 5px; display: flex; flex-direction: row;">
@@ -59,7 +63,7 @@ function getProductCard(recibedProducts) {
         <button type="submit">Editar producto</button>
       </a>
     `;
-  return html;
+  return html1+html+html2;
 }
 
 function formEditProduct(recibedProduct){
@@ -115,6 +119,8 @@ function formEditProduct(recibedProduct){
 /*_______________________________________Client________________________________________________ */
 function getProductCardsClient(recibedProducts) {
   let html = '';
+  const html1 = '<div class="product-card" style="display: flex; justify-content: center;flex-wrap: wrap; width: 100%;" >';
+  const html2='</div>'
   for (let recibedProduct of recibedProducts) {
     html += `
       <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px;border-radius: 5px; display: flex; flex-direction: row;">
@@ -129,11 +135,13 @@ function getProductCardsClient(recibedProducts) {
       </div>
     `;
   }
-  return html;
+  return html1+html+html2;
 }
 
 function getProductCardClient(recibedProducts) {
   let html = '';
+  const html1 = '<div class="product-card" style="display: flex; justify-content: center;flex-wrap: wrap; width: 100%;" >';
+  const html2='</div>'
     html += `
       <div class="product-card"  style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px; border-radius: 5px; display: flex; jflex-direction: row;">
         <div class="product-card" style="margin-left: 5px">
@@ -146,11 +154,8 @@ function getProductCardClient(recibedProducts) {
             <p>Precio: ${recibedProducts.price} €</p>
         </div>
       </div>
-      <a href="/products">
-        <button type="submit">Volver a los productos</button>
-      </a>
     `;
-  return html;
+  return html1+html+html2;
 }
 
 //Navigation Bar for Category User

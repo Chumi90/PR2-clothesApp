@@ -27,10 +27,10 @@ router.get('/products/:category/category', ProductController.productsCategoryCli
 
 //Pagina inicial
 router.get('/', ProductController.initial); //Muestra todos los productos
-//Navigation products
-// for(let navroute of ProductController.varNav)
-// router.get(`/products/${navroute}`, ProductController.productsCategory); //Muestra todos los productos
 
+/*___________________________________LOGIN___________________________________ */
+// router.get('/login', ProductController.formLogin);
+// router.POST('/login/?:PASS', ProductController.sendLogin);
 /*___________________________________API-JSON___________________________________ */
 
 //DashBoard
