@@ -23,7 +23,7 @@ function showProductCreated(recibedProducts) {
 }
 //Show a all product created
 function getProductCards(recibedProducts) {
-  const html1 = '<div class="product-card" style="display: flex; justify-content: center;flex-wrap: wrap; width: 100%;" >';
+  const html1 = '<div class="product-card" style="display: flex; justify-content: center ;flex-wrap: wrap; width: 100%;" >';
   const html2='</div>'
   let html='';
   for (let recibedProduct of recibedProducts) {

@@ -5,13 +5,13 @@ function navigationBarhtmlDashboard(product){
     let varNavigate = '';
     const initVar=`
         <nav id="navVar" class="navVar" style="list-style: none">
-        <ul style="list-style-type: none; display: flex; justify-content: center;flex-wrap: wrap; width: 100%;">
+        <ul style="list-style-type: none; display: flex; justify-content: center; flex-wrap: wrap; width: 100%;">
         <a href="/dashboard" style="text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
             <li class="navVar">Home</li>
         </a>
             `
     const finalNavigate=`
-        <a href="/" style="text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
+        <a href="/?_method=POST" style="text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
             <li class="navVar">Salir</li>
         </a>
         </ul>

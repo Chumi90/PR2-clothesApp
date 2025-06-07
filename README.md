@@ -47,7 +47,9 @@ Para poder comenzar con el proyecto sedeberán instalar las siguientes dependenc
 - npm init -y
 - npm i express mongoose dotenv -E
 - npm install cors
-- npm install axios
+- npm install method-override
+- npm install express-session
+- npm install body-parser
 
 # Ignorar archivos de carga
 Crear un archivo .env para ignorar los siguientes archivos:

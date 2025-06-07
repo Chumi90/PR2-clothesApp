@@ -18,7 +18,7 @@ const finalHTML=`
 const formNewProduct=`
         <h1>Introduzca producto</h1>
 
-        <form action="/dashboard" method="post">
+        <form action="/dashboard?_method=PUT" method="post">
             <ul>
                 <li>
                     <label for="name">Producto: </label>
