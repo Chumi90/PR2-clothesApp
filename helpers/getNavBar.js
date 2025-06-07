@@ -1,9 +1,35 @@
 //Navigation Bars
 
+function navigationBarhtmlDashboard(product){
+    let varNavigate = '';
+    const initVar=`
+        <nav id="navVar" class="navVar">
+        <ul>
+        <a href="/dashboard">
+            <li class="navVar">Home</li>
+        </a>
+            `
+    const finalNavigate=`
+        <a href="/">
+            <li class="navVar">Salir</li>
+        </a>
+        </ul>
+        </nav>
+    `
+    for (let category of product) {
+        varNavigate +=`
+            <a href="/dashboard/${category}">
+            <li class="navVar" value="${category}">${category}</li>
+            </a>
+        `
+    }
+    return initVar+varNavigate+finalNavigate;
+}
+
 function navigationBarhtmlUser(product){
     let varNavigate = '';
     const initVar=`
-        <nav class="navVar">
+        <nav id="navVar" class="navVar">
         <ul>
         <a href="/">
             <li class="navVar">Home</li>
@@ -28,5 +54,4 @@ function navigationBarhtmlUser(product){
     }
     return initVar+varNavigate+finalNavigate;
 }
-
-module.exports={navigationBarhtmlUser};
+module.exports={navigationBarhtmlUser,navigationBarhtmlDashboard};

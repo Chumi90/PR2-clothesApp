@@ -1,5 +1,8 @@
 //Templates for the interface
 //
+const {navigationBarhtmlUser,navigationBarhtmlDashboard}=require('../helpers/getNavBar.js');
+
+//Show the product created
 function showProductCreated(recibedProducts) {
   let html = '';
     html += `
@@ -56,7 +59,7 @@ function formEditProduct(recibedProduct){
     return `
         <h1>Editar producto</h1>
 
-        <form action="/dashboard/${recibedProduct._id}/edit" method="post">
+        <form action="/dashboard/${recibedProduct._id}/edit?_method=UPDATE" method="post">
             <ul>
                 <li>
                     <label for="name">Producto: </label>
@@ -77,7 +80,7 @@ function formEditProduct(recibedProduct){
                 <li>
                     <label for="sizeClothes">Introduce talla: </label>
                     <select name="size" id="sizeClothes">
-                        <option value="">${String(recibedProduct.size)}</option>
+                        <option value="${String(recibedProduct.size)}">${String(recibedProduct.size)}</option>
                         <option value="XS">XS</option>
                         <option value="S">S</option>
                         <option value="M">M</option>
@@ -97,12 +100,12 @@ function formEditProduct(recibedProduct){
             <a href="/dashboard">
                 <button>Ver todos los productos</button>
             </a>
-            <a href="/dashboard/${recibedProduct._id}/delete">
+            <a href="/dashboard/${recibedProduct._id}/delete?_method=DELETE">
                 <button>Eliminar Producto</button>
             </a>
     `}
 
-
+/*_______________________________________Client________________________________________________ */
 function getProductCardsClient(recibedProducts) {
   let html = '';
   for (let recibedProduct of recibedProducts) {
@@ -139,8 +142,7 @@ function getProductCardClient(recibedProducts) {
   return html;
 }
 
-const {navigationBarhtmlUser}=require('../helpers/getNavBar.js');
-//Navigation Bar for Category
+//Navigation Bar for Category User
 function navigationBarUser (recibedProducts){
   if(!recibedProducts){
   }else{
@@ -148,6 +150,16 @@ function navigationBarUser (recibedProducts){
   }
   return navigationBarhtmlUser(unicProducts);
 }
+
+//Navigation Bar for Category Dasboard
+function navigationBarDashboard (recibedProducts){
+  if(!recibedProducts){
+  }else{
+  unicProducts= [...new Set(recibedProducts.map(objeto => objeto.category))];
+  }
+  return navigationBarhtmlDashboard(unicProducts);
+}
+
 //Trae un solo producto de cada Categoría
 function oneProductObject(category,data){
   let oneCategory=[];
@@ -166,4 +178,4 @@ function oneProductObject(category,data){
   return oneCategory;
 }
 
-module.exports={showProductCreated,getProductCards,getProductCard,formEditProduct,getProductCardsClient,getProductCardClient,navigationBarUser,oneProductObject}
+module.exports={showProductCreated,getProductCards,getProductCard,formEditProduct,getProductCardsClient,getProductCardClient,navigationBarUser,oneProductObject,navigationBarDashboard}

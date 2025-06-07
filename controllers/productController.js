@@ -4,7 +4,8 @@ const Product = require('../models/Product.js');
 const BaseHtml=require('../helpers/baseHtml.js');
 const {showProductCreated,getProductCards,
   getProductCard,formEditProduct,getProductCardClient,
-  getProductCardsClient,navigationBarUser,oneProductObject}=require('../helpers/template.js')
+  getProductCardsClient,navigationBarUser,oneProductObject,
+  navigationBarDashboard}=require('../helpers/template.js')
 
 
 
@@ -62,7 +63,7 @@ const ProductCreate = {
         let ProductCategory=[...new Set(recibedProducts.map(objeto => objeto.category))]
         unicProducts=ProductCategory;
         let oneProduct = oneProductObject(ProductCategory,recibedProducts);
-        res.send(BaseHtml.baseHTML+navigationBarUser(recibedProducts)+BaseHtml.buttonBack+getProductCards(oneProduct)+BaseHtml.finalHTML);
+        res.send(BaseHtml.baseHTML+navigationBarDashboard(oneProduct)+BaseHtml.buttonBack+getProductCards(recibedProducts)+BaseHtml.finalHTML);
       }catch(error){
         console.error(error);
           res.status(500).send({ message: "There was a problem trying to create a Product" });
@@ -163,7 +164,69 @@ async initial(req,res){
             res.status(500).send({ message: "There was a problem trying to create a Product" });
         }
     },
-}
 
+/*______________________________________________API-JSON__________________________________________________________________________*/
+
+
+async createProductAPI(req,res){
+     try {
+        const product =await Product.create(req.body);
+        productCreate=req.body;
+        res.redirect('/dashboard/created');
+    } catch (error) {
+        if((req.body.price).indexOf(",") !== (-1)){
+          res
+            .status(200)
+            .send({ message: "There was a problem with the price must use ‘.’, to decimals and could not contain characters"});
+        }else{
+          console.error(error);
+          res
+              .status(500)
+              .send({ message: "There was a problem trying to create a the product" });
+        }
+    }
+  },
+
+
+async productsAPI(req,res){
+      try{
+        const recibedProducts = await Product.find().sort({"category":1}); //Require the product and Order by Category
+         res.json(recibedProducts)
+      }catch(error){
+        console.error(error);
+          res.status(500).send({ message: "There was a problem trying to create a Product" });
+      }
+    },
+
+async productAPI(req,res){
+        try{
+          const recibedProduct = await Product.findById(`${req.params._id}`);
+          res.json(recibedProduct)
+        }catch(error){
+          console.error(error);
+            res.status(500).send({ message: "There was a problem trying to create a Product" });
+        }
+      },
+
+async productChangedAPI(req,res){
+      try{
+          const product = await Product.findByIdAndUpdate(req.body._id,{...req.body},{ new: true });
+      }catch (error){
+        console.error(error);
+              res.status(500).send({ message: "There was a problem trying to create a Product Modify" });
+      }
+  },
+
+async deleteProductAPI(req,res){
+      try{
+          const product = await Product.findByIdAndDelete(req.body);
+      }catch (error){
+        console.error(error);
+              res.status(500).send({ message: "There was a problem trying to create a Product Modify" });
+      }
+  },
+
+  
+}
 module.exports = ProductCreate;
 
