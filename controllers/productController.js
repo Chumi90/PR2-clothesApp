@@ -61,6 +61,7 @@ const ProductCreate = {
       try{
         const recibedProducts = await Product.find().sort({"category":1}); //Require the product and Order by Category
         let ProductCategory=[...new Set(recibedProducts.map(objeto => objeto.category))]
+        unicProducts="";
         unicProducts=recibedProducts;
         let oneProduct = oneProductObject(ProductCategory,recibedProducts);
         res.send(BaseHtml.baseHTML+navigationBarDashboard(unicProducts)+BaseHtml.buttonBack+getProductCards(oneProduct)+BaseHtml.finalHTML);
@@ -74,7 +75,6 @@ const ProductCreate = {
   async product(req,res){
         try{
           const recibedProduct = await Product.findById(`${req.params._id}`);
-          console.log(unicProducts)
           res.send(BaseHtml.baseHTML+navigationBarDashboard(unicProducts)+getProductCard(recibedProduct)+BaseHtml.buttonBackhome+BaseHtml.finalHTML);
         }catch(error){
           console.error(error);
@@ -117,7 +117,7 @@ const ProductCreate = {
 //Show product by category
   async productsCategoryDashboard(req,res){
       try{
-        const recibedProducts = await Product.find({category:`${req.params.category}`});
+        const recibedProducts = await Product.find({category:`${req.params.category}`}).sort({"category":1});
         res.send(BaseHtml.baseHTMLProducts+navigationBarDashboard(unicProducts)+getProductCards(recibedProducts)+BaseHtml.finalHTML);
       }catch(error){
         console.error(error);
@@ -148,7 +148,7 @@ const ProductCreate = {
 //Show product by category
   async productsCategoryClients(req,res){
       try{
-        const recibedProducts = await Product.find({category:`${req.params.category}`});
+        const recibedProducts = await Product.find({category:`${req.params.category}`}).sort({"category":1});
         res.send(BaseHtml.baseHTMLProducts+navigationBarUser(unicProducts)+getProductCardsClient(recibedProducts)+BaseHtml.finalHTML);
       }catch(error){
         console.error(error);
@@ -162,6 +162,7 @@ async initial(req,res){
       try{
           const recibedProducts = await Product.find().sort({"category":1});
           let ProductCategory=[...new Set(recibedProducts.map(objeto => objeto.category))]
+          unicProducts="";
           unicProducts=recibedProducts;
           let oneProduct = oneProductObject(ProductCategory,recibedProducts);
           res.send(BaseHtml.baseHTMLProducts+navigationBarUser(recibedProducts)+getProductCardsClient(oneProduct)+BaseHtml.finalHTML);

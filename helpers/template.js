@@ -6,14 +6,17 @@ const {navigationBarhtmlUser,navigationBarhtmlDashboard}=require('../helpers/get
 function showProductCreated(recibedProducts) {
   let html = '';
     html += `
-      <div class="product-card">
-        <h2>${recibedProducts.category}</h2>
-          <img src="${recibedProducts.image}" alt="${recibedProducts.product}" width="200">
-          <h2>Producto: ${recibedProducts.product}</h2>
-          <h3>Descripción: </h3>
-          <p>${recibedProducts.description}</p>
-          <p>Talla: ${recibedProducts.size}</p>
-          <p>Precio: ${recibedProducts.price} €</p>
+
+      <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px;border-radius: 5px;display: flex; flex-direction: row;">
+        <div class="product-card" style="margin-left: 5px">
+          <h2>${recibedProducts.category}</h2>
+            <img src="${recibedProducts.image}" alt="${recibedProducts.product}" width="150">
+            <h2>Producto: ${recibedProducts.product}</h2>
+            <h3>Descripción: </h3>
+            <p>${recibedProducts.description}</p>
+            <p>Talla: ${recibedProducts.size}</p>
+            <p>Precio: ${recibedProducts.price} €</p>
+        </div>
       </div>
     `;
   return html;
@@ -23,13 +26,15 @@ function getProductCards(recibedProducts) {
   let html = '';
   for (let recibedProduct of recibedProducts) {
     html += `
-      <div class="product-card">
-        <h2>${recibedProduct.category}</h2>
-          <img src="${recibedProduct.image}" alt="${recibedProduct.product}" width="200">
-          <br>
-          <a href="/dashboard/${recibedProduct._id}">
-            <button type="submit">Ver producto</button>
-          </a>
+      <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px;border-radius: 5px; display: flex; flex-direction: row;">
+        <div class="product-card" style="margin-left: 5px">
+          <h2>${recibedProduct.category}</h2>
+            <img src="${recibedProduct.image}" alt="${recibedProduct.product}" width="150">
+            <br>
+            <a href="/dashboard/${recibedProduct._id}">
+              <button type="submit">Ver producto</button>
+            </a>
+        </div>
       </div>
     `;
   }
@@ -39,14 +44,16 @@ function getProductCards(recibedProducts) {
 function getProductCard(recibedProducts) {
   let html = '';
     html += `
-      <div class="product-card">
-        <h2>${recibedProducts.category}</h2>
-          <img src="${recibedProducts.image}" alt="${recibedProducts.product}" width="200">
-          <h2>Producto: ${recibedProducts.product}</h2>
-          <h3>Descripción: </h3>
-          <p>${recibedProducts.description}</p>
-          <p>Talla: ${recibedProducts.size}</p>
-          <p>Precio: ${recibedProducts.price} €</p>
+      <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px;border-radius: 5px; display: flex; flex-direction: row;">
+        <div class="product-card" style="margin-left: 5px">
+          <h2>${recibedProducts.category}</h2>
+            <img src="${recibedProducts.image}" alt="${recibedProducts.product}" width="150">
+            <h2>Producto: ${recibedProducts.product}</h2>
+            <h3>Descripción: </h3>
+            <p>${recibedProducts.description}</p>
+            <p>Talla: ${recibedProducts.size}</p>
+            <p>Precio: ${recibedProducts.price} €</p>
+        </div>
       </div>
       <a href="/dashboard/${recibedProducts._id}/edit">
         <button type="submit">Editar producto</button>
@@ -110,13 +117,15 @@ function getProductCardsClient(recibedProducts) {
   let html = '';
   for (let recibedProduct of recibedProducts) {
     html += `
-      <div class="product-card">
-        <h2>${recibedProduct.category}</h2>
-          <img src="${recibedProduct.image}" alt="${recibedProduct.product}" width="200">
-          <br>
-          <a href="/products/${recibedProduct._id}">
-            <button type="submit">Ver producto</button>
-          </a>
+      <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px;border-radius: 5px; display: flex; flex-direction: row;">
+        <div class="product-card" style="margin-left: 5px">
+          <h2>${recibedProduct.category}</h2>
+            <img src="${recibedProduct.image}" alt="${recibedProduct.product}" width="150">
+            <br>
+            <a href="/products/${recibedProduct._id}">
+              <button type="submit">Ver producto</button>
+            </a>
+        </div>
       </div>
     `;
   }
@@ -126,14 +135,16 @@ function getProductCardsClient(recibedProducts) {
 function getProductCardClient(recibedProducts) {
   let html = '';
     html += `
-      <div class="product-card">
-        <h2>${recibedProducts.category}</h2>
-          <img src="${recibedProducts.image}" alt="${recibedProducts.product}" width="200">
-          <h2>Producto: ${recibedProducts.product}</h2>
-          <h3>Descripción: </h3>
-          <p>${recibedProducts.description}</p>
-          <p>Talla: ${recibedProducts.size}</p>
-          <p>Precio: ${recibedProducts.price} €</p>
+      <div class="product-card"  style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px; border-radius: 5px; display: flex; jflex-direction: row;">
+        <div class="product-card" style="margin-left: 5px">
+          <h2>${recibedProducts.category}</h2>
+            <img src="${recibedProducts.image}" alt="${recibedProducts.product}" width="150">
+            <h2>Producto: ${recibedProducts.product}</h2>
+            <h3>Descripción: </h3>
+            <p>${recibedProducts.description}</p>
+            <p>Talla: ${recibedProducts.size}</p>
+            <p>Precio: ${recibedProducts.price} €</p>
+        </div>
       </div>
       <a href="/products">
         <button type="submit">Volver a los productos</button>
@@ -164,8 +175,8 @@ function navigationBarDashboard (recibedProducts){
 function oneProductObject(category,data){
   let oneCategory=[];
   let limitCategory=0;
-  for (let i=0;i<data.length;i++){
-    for (let x=0;x<category.length;x++){
+  for (let i=0;i<category.length;i++){
+    for (let x=0;x<data.length;x++){
       if(category[i]==data[x].category){
         if (limitCategory==0){
           oneCategory.push(data[x]);

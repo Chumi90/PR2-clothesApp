@@ -7,9 +7,8 @@ const baseHTML =`
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>DashBoard</title>
-            <link rel="stylesheet" href="./style.css">
         </head>
-        <body>`
+        <body style="font-family: Arial; padding: 15px">`
             
 const finalHTML=`
 
@@ -98,8 +97,7 @@ const baseHTMLProducts =`
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Products</title>
-            <link rel="stylesheet" href="./style.css">
         </head>
-        <body>`
+         <body style="font-family: Arial; padding: 15px">`
 
 module.exports={baseHTML,finalHTML,formNewProduct,viewCreatedProduct,buttonBackCreate,buttonBack,buttonBackhome,baseHTMLProducts};
