@@ -73,21 +73,28 @@ const buttonBackCreate=`
     
 `
 const buttonBack=`
-    <a href="/dashboard/new">
-        <button type="submit">Crear nuevo producto</button>
+    <div>
+    <div style=" display: flex; justify-content: center;">
+    <a href="/dashboard/new" >
+        <button type="submit" style="border: none; text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">Crear nuevo producto</button>
     </a>
     <a href="/dashboard">
-        <button>Actualizar productos</button>
+        <button type="submit" style="border: none; text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">Actualizar productos</button>
     </a>
-    
+    </div>
+    </div>
 `
 const buttonBackhome=`
-    <a href="/dashboard/new">
-        <button type="submit">Crear nuevo producto</button>
-    </a>
-    <a href="/dashboard">
-        <button>Volver al dashboard</button>
-    </a>
+    <div>
+    <div style=" display: flex; justify-content: center;">
+        <a href="/dashboard/new">
+            <button type="submit" style="border: none; text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">Crear nuevo producto</button>
+        </a>
+        <a href="/dashboard">
+            <button type="submit" style="border: none; text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">Volver al dashboard</button>
+        </a>
+    </div>
+    </div>
 `
 
 const baseHTMLProducts =`

@@ -11,12 +11,14 @@ function navigationBarhtmlDashboard(product){
         </a>
             `
     const finalNavigate=`
-        <a href="/?_method=POST" style="text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
-            <li class="navVar">Salir</li>
-        </a>
+        <form action="/" method="post" style="text-decoration: none; margin: 5px; width: 100%; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
+            <button type="submit" style="width: 100%; background-color: rgba(0, 0, 255, 0.973); border: none; border-radius: 5px; postition: relative; cursor: pointer;">Salir</button>
+        </form>
+        
         </ul>
         </nav>
     `
+
     for (let category of product) {
         varNavigate +=`
             <a href="/dashboard/${category}/category" style="text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">

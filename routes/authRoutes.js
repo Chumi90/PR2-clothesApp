@@ -2,8 +2,9 @@
 const express = require('express');
 const session = require('express-session');
 const app = express.Router();
-const middlewares = require('../middlewares/authMiddleware.js');
+const middlewares = require('../middleware/authMiddleware.js');
     app.get('/products/login', (req, res) => {
+      
       const mensajeError = req.query.error
         ? (req.query.error === '1' ? 'Palabra incorrecta, inténtalo de nuevo.' : 'No estás logado.')
         : '';
@@ -26,9 +27,6 @@ const middlewares = require('../middlewares/authMiddleware.js');
   });
 
 
-  app.post('/products/login/user', middlewares.validarPalabraMiddleware, (req, res) => {
-    res.redirect('/dashboard');
-  });
 
   app.get('/products/login/user', middlewares.verificarSesionMiddleware, (req, res) => {
   res.send(`
@@ -37,9 +35,19 @@ const middlewares = require('../middlewares/authMiddleware.js');
       <button type="submit">Log Out</button>
     </form>
   `);
+  console.log("pasa")
   });
 
-  // Utilizar para el boton de salida del dashboard
+  app.post('/products/login/user', middlewares.validarPalabraMiddleware, (req, res) => {
+    res.redirect('/dashboard');
+  });
+
+
+
+  
+  
+
+ // Utilizar para el boton de salida del dashboard
   app.post('/', (req, res) => {
     console.log('funciona')
     req.session.destroy((err) => {

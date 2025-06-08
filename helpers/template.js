@@ -45,11 +45,15 @@ function getProductCards(recibedProducts) {
 
 function getProductCard(recibedProducts) {
   const html1 = '<div class="product-card" style="display: flex; justify-content: center;flex-wrap: wrap; width: 100%;" >';
+  const html0=`
+      <a href="/dashboard/${recibedProducts._id}/edit" style="display: flex; justify-content: center; align-items: center; padding-bottom: 10px; text-decoration: none;">
+        <button type="submit">Editar producto</button>
+      </a>`
   const html2='</div>'
   let html = '';
     html += `
       <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px;border-radius: 5px; display: flex; flex-direction: row;">
-        <div class="product-card" style="margin-left: 5px">
+          <div class="product-card" style="margin-left: 5px">
           <h2>${recibedProducts.category}</h2>
             <img src="${recibedProducts.image}" alt="${recibedProducts.product}" width="150">
             <h2>Producto: ${recibedProducts.product}</h2>
@@ -59,11 +63,9 @@ function getProductCard(recibedProducts) {
             <p>Precio: ${recibedProducts.price} €</p>
         </div>
       </div>
-      <a href="/dashboard/${recibedProducts._id}/edit">
-        <button type="submit">Editar producto</button>
-      </a>
+      
     `;
-  return html1+html+html2;
+  return html0+html1+html+html2;
 }
 
 function formEditProduct(recibedProduct){
