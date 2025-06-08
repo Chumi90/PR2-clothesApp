@@ -119,7 +119,30 @@ const baseHTMLLogin=`
             <title>Login User</title>
         </head>
          <body style="font-family: Arial; padding: 15px">
-`;
+         <body style="font-family: Arial; padding: 15px">
+                <h1>Login Usuario</h1>
+    `;
 
+const formLoginAdministrator=`
+    <form method="post" action="/products/login/user">
+        <label for="palabra">Introduce contraseña:</label>
+        <input type="text" name="palabra" required>
+        <button type="submit">Entrar</button>
+    </form>
+    <form method="post" action="/">
+        <button type="submit">Salir</button>
+    </form>
+    `;
 
-module.exports={baseHTML,finalHTML,formNewProduct,viewCreatedProduct,buttonBackCreate,buttonBack,buttonBackhome,baseHTMLProducts,baseHTMLLogin};
+const loginVerify=`
+    <h1>Ruta del Perfil (Sesión activa)</h1>
+    <form method="post" action="/logout">
+        <button type="submit">Log Out</button>
+    </form>
+    `
+
+module.exports={baseHTML,finalHTML,
+    formNewProduct,viewCreatedProduct,buttonBackCreate,
+    buttonBack,buttonBackhome,
+    baseHTMLProducts,
+    baseHTMLLogin,formLoginAdministrator,loginVerify};

@@ -6,11 +6,10 @@ const {navigationBarhtmlUser,navigationBarhtmlDashboard}=require('../helpers/get
 function showProductCreated(recibedProducts) {
   let html = '';
     html += `
-
-      <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px;border-radius: 5px;display: flex; flex-direction: row;">
-        <div class="product-card" style="margin-left: 5px">
+      <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin: 5px;border-radius: 5px; display: flex; flex-direction: row; padding: 1em;"">
+        <div class="product-card" style="display: flex;flex-direction: column; justify-content: center; width: 160px;">
           <h2>${recibedProducts.category}</h2>
-            <img src="${recibedProducts.image}" alt="${recibedProducts.product}" width="150">
+            <img src="${recibedProducts.image}" alt="${recibedProducts.product}" height="150">
             <h2>Producto: ${recibedProducts.product}</h2>
             <h3>Descripción: </h3>
             <p>${recibedProducts.description}</p>
@@ -23,15 +22,15 @@ function showProductCreated(recibedProducts) {
 }
 //Show a all product created
 function getProductCards(recibedProducts) {
-  const html1 = '<div class="product-card" style="display: flex; justify-content: center ;flex-wrap: wrap; width: 100%;" >';
+  const html1 = '<div class="product-card" style="display: flex; justify-content: center;flex-wrap: wrap; width: 100%;" >';
   const html2='</div>'
   let html='';
   for (let recibedProduct of recibedProducts) {
     html += `
-      <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px;border-radius: 5px; display: flex; flex-direction: row;">
-        <div class="product-card" style="margin-left: 5px">
+      <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin: 5px;border-radius: 5px; display: flex; flex-direction: row; padding: 1em;"">
+        <div class="product-card" style="display: flex;flex-direction: column; justify-content: center; width: 160px;">
           <h2>${recibedProduct.category}</h2>
-            <img src="${recibedProduct.image}" alt="${recibedProduct.product}" width="150">
+            <img src="${recibedProduct.image}" alt="${recibedProduct.product}" height="150">
             <br>
             <a href="/dashboard/${recibedProduct._id}">
               <button type="submit">Ver producto</button>
@@ -44,7 +43,7 @@ function getProductCards(recibedProducts) {
 }
 
 function getProductCard(recibedProducts) {
-  const html1 = '<div class="product-card" style="display: flex; justify-content: center;flex-wrap: wrap; width: 100%;" >';
+  const html1 = '<div class="product-card" style="display: flex; justify-content: center; flex-wrap: wrap; width: 100%;" >';
   const html0=`
       <a href="/dashboard/${recibedProducts._id}/edit" style="display: flex; justify-content: center; align-items: center; padding-bottom: 10px; text-decoration: none;">
         <button type="submit">Editar producto</button>
@@ -52,10 +51,10 @@ function getProductCard(recibedProducts) {
   const html2='</div>'
   let html = '';
     html += `
-      <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px;border-radius: 5px; display: flex; flex-direction: row;">
-          <div class="product-card" style="margin-left: 5px">
+      <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin: 5px;border-radius: 5px; display: flex; flex-direction: row; padding: 1em;">
+          <div class="product-card" style="display: flex;flex-direction: column; justify-content: center; width: 160px;">
           <h2>${recibedProducts.category}</h2>
-            <img src="${recibedProducts.image}" alt="${recibedProducts.product}" width="150">
+            <img src="${recibedProducts.image}" alt="${recibedProducts.product}" height="150">
             <h2>Producto: ${recibedProducts.product}</h2>
             <h3>Descripción: </h3>
             <p>${recibedProducts.description}</p>
@@ -72,7 +71,7 @@ function formEditProduct(recibedProduct){
     return `
         <h1>Editar producto</h1>
 
-        <form action="/dashboard/${recibedProduct._id}/edit?_method=UPDATE" method="post">
+        <form action="/dashboard/${recibedProduct._id}/edit?_method=UPDATE">
             <ul>
                 <li>
                     <label for="name">Producto: </label>
@@ -125,10 +124,10 @@ function getProductCardsClient(recibedProducts) {
   const html2='</div>'
   for (let recibedProduct of recibedProducts) {
     html += `
-      <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px;border-radius: 5px; display: flex; flex-direction: row;">
-        <div class="product-card" style="margin-left: 5px">
+      <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin: 5px;border-radius: 5px; display: flex; flex-direction: row; padding: 1em;">
+        <div class="product-card" style="display: flex;flex-direction: column; justify-content: center; width: 160px;" >
           <h2>${recibedProduct.category}</h2>
-            <img src="${recibedProduct.image}" alt="${recibedProduct.product}" width="150">
+            <img src="${recibedProduct.image}" alt="${recibedProduct.product}" height="150">
             <br>
             <a href="/products/${recibedProduct._id}">
               <button type="submit">Ver producto</button>
@@ -142,13 +141,13 @@ function getProductCardsClient(recibedProducts) {
 
 function getProductCardClient(recibedProducts) {
   let html = '';
-  const html1 = '<div class="product-card" style="display: flex; justify-content: center;flex-wrap: wrap; width: 100%;" >';
+  const html1 = '<div class="product-card" style="display: flex; justify-content: center; flex-wrap: wrap; width: 100%;" >';
   const html2='</div>'
     html += `
-      <div class="product-card"  style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin-left: 5px; border-radius: 5px; display: flex; jflex-direction: row;">
-        <div class="product-card" style="margin-left: 5px">
+      <div class="product-card"  style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin: 5px; border-radius: 5px; display: flex; jflex-direction: row; padding: 1em;">
+        <div class="product-card" style="display: flex;flex-direction: column ;ustify-content: center; width: 160px;">
           <h2>${recibedProducts.category}</h2>
-            <img src="${recibedProducts.image}" alt="${recibedProducts.product}" width="150">
+            <img src="${recibedProducts.image}" alt="${recibedProducts.product}" height="150">
             <h2>Producto: ${recibedProducts.product}</h2>
             <h3>Descripción: </h3>
             <p>${recibedProducts.description}</p>
