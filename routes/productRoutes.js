@@ -5,9 +5,10 @@ const router = express.Router();
 const Product = require('../models/Product.js');
 const ProductController = require('../controllers/productController.js');
 
+
 const middlewares = require('../middleware/authMiddleware.js');//Protección de las rutas
 
-//DashBoard
+//Rutas DashBoard
 router.get('/dashboard/new', ProductController.newProduct,middlewares.verificarSesionMiddleware);//Formulario
 router.post('/dashboard', ProductController.createProduct, middlewares.verificarSesionMiddleware);//Post para crear en Mongo DB
 router.get('/dashboard/created', middlewares.verificarSesionMiddleware, ProductController.showProductCreated);//Producto creado
@@ -19,7 +20,7 @@ router.post('/dashboard/:_id/edit', ProductController.productChanged, middleware
 router.get('/dashboard/:_id/delete', ProductController.deleteProduct, middlewares.verificarSesionMiddleware);//Muestra el formulario
 router.get('/dashboard/:category/category', ProductController.productsCategoryDashboard, middlewares.verificarSesionMiddleware);//Muestra por categoria
 
-//Pagina principal de productos para clientes
+//Rutas Pagina principal de productos para clientes
 router.get('/products', ProductController.productsClients); //Muestra todos los productos
 router.get('/products/:_id', ProductController.productsDetailClients); //Muestra todos los productos
 router.get('/products/:category/category', ProductController.productsCategoryClients);//Muestra por categoria

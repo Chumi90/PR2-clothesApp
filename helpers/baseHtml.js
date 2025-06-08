@@ -11,9 +11,9 @@ const baseHTML =`
         <body style="font-family: Arial; padding: 15px">`
             
 const finalHTML=`
-
         </body>
-        </html>`
+        </html>
+        `;
     
 const formNewProduct=`
         <h1>Introduzca producto</h1>
@@ -59,7 +59,8 @@ const formNewProduct=`
             <a href="/dashboard">
                 <button>Ver todos los productos</button>
             </a>
-    `
+    `;
+
 const viewCreatedProduct=` 
     <h1>Introduzca producto</h1>
     `
@@ -69,9 +70,9 @@ const buttonBackCreate=`
     </a>
     <a href="/dashboard">
         <button>Ver todos los productos</button>
-    </a>
-    
-`
+    </a> 
+`;
+
 const buttonBack=`
     <div>
     <div style=" display: flex; justify-content: center;">
@@ -83,7 +84,7 @@ const buttonBack=`
     </a>
     </div>
     </div>
-`
+`;
 const buttonBackhome=`
     <div>
     <div style=" display: flex; justify-content: center;">
@@ -95,7 +96,7 @@ const buttonBackhome=`
         </a>
     </div>
     </div>
-`
+`;
 
 const baseHTMLProducts =`
         <!DOCTYPE html>
@@ -105,6 +106,20 @@ const baseHTMLProducts =`
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Products</title>
         </head>
-         <body style="font-family: Arial; padding: 15px">`
+         <body style="font-family: Arial; padding: 15px">
+         `;
 
-module.exports={baseHTML,finalHTML,formNewProduct,viewCreatedProduct,buttonBackCreate,buttonBack,buttonBackhome,baseHTMLProducts};
+
+const baseHTMLLogin=`
+    <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Login User</title>
+        </head>
+         <body style="font-family: Arial; padding: 15px">
+`;
+
+
+module.exports={baseHTML,finalHTML,formNewProduct,viewCreatedProduct,buttonBackCreate,buttonBack,buttonBackhome,baseHTMLProducts,baseHTMLLogin};

@@ -7,8 +7,6 @@ const {showProductCreated,getProductCards,
   getProductCardsClient,navigationBarUser,oneProductObject,
   navigationBarDashboard}=require('../helpers/template.js')
 
-
-
 let productCreate='';
 let unicProducts='';//Create to Nav Bar
 const ProductCreate = {

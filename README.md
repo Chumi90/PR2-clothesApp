@@ -97,7 +97,7 @@ En la siguiente función se crea la estructura de los usuarios
 - password:{type: String, required: true}
 - category:{type: String, required: true}
 
-# Creación de rutas
+# Creación de rutas DashBoard
 En este punto tendremos que realizar la creación de rutas para poder realizar modificaciones dentro de la base de datos.
 - Primero has de crear la ruta /dashboard/new , dentro de esta ruta tendrás que utilizar el método GET tendrás el formulario para crear un producto.
     - Crea 2 botones
@@ -117,15 +117,18 @@ En este punto tendremos que realizar la creación de rutas para poder realizar m
         - Primer botón, te devolverá a la ruta /dashboard/new con metodo GET para que crees un nuevo producto.
         - Segundo botón, te devolverá a la ruta /dashboard con metodo GET para actualizar los productos.
 
-- Quinto has de crear la ruta /dashboard/:_id/edit: con el metodo GET para que te devuelva el formulario y editar el producto
+- Quinto has de crear la ruta /dashboard/:_id/edit con el metodo GET para que te devuelva el formulario y editar el producto
     Nota: tienes que crear el metodo  [Method Override](https://www.npmjs.com/package/method-override)
     - Primero instala las dependecias de Override npm install method-override
     - Segundo debes requerir en index.js
     - Tercero usa dentro del index.js app.use(methodOverride('X-HTTP-Method-Override')) para actualizar y borrar la información.
+        - Utiliza "?_method=UPDATE" para enviar los formularios este método ayudará al navegador a identificar el tipo de acción que quieres realizar <form action="/dashboard/${recibedProduct._id}/edit?_method=UPDATE">
     - Quinto crea las rutas get y post para obtener los datos y enviar las actualizaciones realizadas a la Base de datos de Mongo DB.
 
 - Sexto has de crear la ruta /dashboard/:_id/delete con el metodo GET para poder realizar el borrado de un dato.
     - Usa la const product = await Product.findByIdAndDelete(req.params._id); para elimiar el dato.
 
-- Septimo has de crear la página principal donde deberás obtener todos los productos puedes utilizar las funciones creadas para el Dashboard
-- Octavo has de crear la página principal donde deberás obtener el producto seleccionado puedes utilizar las funciones creadas para el Dashboard
+- Octavo has de crear un navegador donde deberás los productos por la categoría seleccionada puedes utilizar las funciones creadas para el Dashboard
+    - Utiliza la función router.get('/dashboard/:category/category') donde la categoria sea el producto.
+
+# Creación de rutas DashBoard
