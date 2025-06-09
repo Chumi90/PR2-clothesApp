@@ -5,7 +5,7 @@ const BaseHtml=require('../helpers/baseHtml.js');
 const {showProductCreated,getProductCards,
   getProductCard,formEditProduct,getProductCardClient,
   getProductCardsClient,navigationBarUser,oneProductObject,
-  navigationBarDashboard}=require('../helpers/template.js')
+  navigationBarDashboard,getProductCardsClientinit}=require('../helpers/template.js')
 
 let productCreate='';
 let unicProducts='';//Create to Nav Bar
@@ -62,7 +62,7 @@ const ProductCreate = {
         unicProducts="";
         unicProducts=recibedProducts;
         let oneProduct = oneProductObject(ProductCategory,recibedProducts);
-        res.send(BaseHtml.baseHTML+navigationBarDashboard(unicProducts)+BaseHtml.buttonBack+getProductCards(oneProduct)+BaseHtml.finalHTML);
+        res.send(BaseHtml.baseHTML+navigationBarDashboard(unicProducts)+BaseHtml.buttonBack+getProductCardsClientinit(oneProduct)+BaseHtml.finalHTML);
       }catch(error){
         console.error(error);
           res.status(500).send({ message: "There was a problem trying to create a Product" });
@@ -163,7 +163,7 @@ async initial(req,res){
           unicProducts="";
           unicProducts=recibedProducts;
           let oneProduct = oneProductObject(ProductCategory,recibedProducts);
-          res.send(BaseHtml.baseHTMLProducts+navigationBarUser(recibedProducts)+getProductCardsClient(oneProduct)+BaseHtml.finalHTML);
+          res.send(BaseHtml.baseHTMLProducts+navigationBarUser(recibedProducts)+getProductCardsClientinit(oneProduct)+BaseHtml.finalHTML);
         }catch(error){
           console.error(error);
             res.status(500).send({ message: "There was a problem trying to create a Product" });
