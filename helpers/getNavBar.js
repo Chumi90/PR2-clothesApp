@@ -21,7 +21,7 @@ function navigationBarhtmlDashboard(product){
 
     for (let category of product) {
         varNavigate +=`
-            <a href="/dashboard/${category}/category" style="text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
+            <a href="/dashboard/category/${category}" style="text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
             <li class="navVar" value="${category}">${category}</li>
             </a>
         `
@@ -51,7 +51,7 @@ function navigationBarhtmlUser(product){
         </nav>
     `
     for (let category of product) {
-        let ruta=`/products/${category}/category`;
+        let ruta=`/products/category/${category}`;
         varNavigate +=`
             <a href="${ruta}" style="text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
             <li class="navVar" value="${category}" style="width: 100%; text-align: center;">${category}</li>

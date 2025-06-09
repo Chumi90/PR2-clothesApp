@@ -20,6 +20,30 @@ function showProductCreated(recibedProducts) {
     `;
   return html;
 }
+
+//Show a all product created
+function getProductCardsCategory(recibedProducts) {
+  const html1 = '<div class="product-card" style="display: flex; justify-content: center;flex-wrap: wrap; width: 100%;" >';
+  const html2='</div>'
+  let html='';
+  for (let recibedProduct of recibedProducts) {
+    html += `
+      <div class="product-card" style="background-color: rgba(212, 205, 205, 0.637);  width: 160px; margin: 5px;border-radius: 5px; display: flex; flex-direction: row; padding: 1em;"">
+        <div class="product-card" style="display: flex;flex-direction: column; justify-content: center; width: 160px;">
+          <h2>${recibedProduct.category}</h2>
+            <img src="${recibedProduct.image}" alt="${recibedProduct.product}" height="150">
+            <br>
+            <a href="/dashboard/category/${recibedProduct.category}">
+              <button type="submit">Ver producto</button>
+            </a>
+        </div>
+      </div>
+    `;
+  }
+  return html1+html+html2;
+}
+
+
 //Show a all product created
 function getProductCards(recibedProducts) {
   const html1 = '<div class="product-card" style="display: flex; justify-content: center;flex-wrap: wrap; width: 100%;" >';
@@ -71,7 +95,7 @@ function formEditProduct(recibedProduct){
     return `
         <h1>Editar producto</h1>
 
-        <form action="/dashboard/${recibedProduct._id}/edit?_method=UPDATE">
+        <form action="/dashboard/${recibedProduct._id}/edit?_method=PUT" method="post">
             <ul>
                 <li>
                     <label for="name">Producto: </label>
@@ -129,7 +153,7 @@ function getProductCardsClientinit(recibedProducts) {
           <h2>${recibedProduct.category}</h2>
             <img src="${recibedProduct.image}" alt="${recibedProduct.product}" height="150">
             <br>
-            <a href="/products/${recibedProduct.category}/category">
+            <a href="/products/category/${recibedProduct.category}">
               <button type="submit">Ver producto</button>
             </a>
         </div>
@@ -215,4 +239,4 @@ function oneProductObject(category,data){
   return oneCategory;
 }
 
-module.exports={showProductCreated,getProductCards,getProductCard,formEditProduct,getProductCardsClient,getProductCardClient,navigationBarUser,oneProductObject,navigationBarDashboard,getProductCardsClientinit}
+module.exports={showProductCreated,getProductCardsCategory,getProductCards,getProductCard,formEditProduct,getProductCardsClient,getProductCardClient,navigationBarUser,oneProductObject,navigationBarDashboard,getProductCardsClientinit}

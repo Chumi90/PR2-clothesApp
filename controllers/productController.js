@@ -2,7 +2,7 @@
 
 const Product = require('../models/Product.js');
 const BaseHtml=require('../helpers/baseHtml.js');
-const {showProductCreated,getProductCards,
+const {showProductCreated,getProductCardsCategory,getProductCards,
   getProductCard,formEditProduct,getProductCardClient,
   getProductCardsClient,navigationBarUser,oneProductObject,
   navigationBarDashboard,getProductCardsClientinit}=require('../helpers/template.js')
@@ -62,7 +62,7 @@ const ProductCreate = {
         unicProducts="";
         unicProducts=recibedProducts;
         let oneProduct = oneProductObject(ProductCategory,recibedProducts);
-        res.send(BaseHtml.baseHTML+navigationBarDashboard(unicProducts)+BaseHtml.buttonBack+getProductCardsClientinit(oneProduct)+BaseHtml.finalHTML);
+        res.send(BaseHtml.baseHTML+navigationBarDashboard(unicProducts)+BaseHtml.buttonBack+getProductCardsCategory(oneProduct)+BaseHtml.finalHTML);
       }catch(error){
         console.error(error);
           res.status(500).send({ message: "There was a problem trying to create a Product" });
