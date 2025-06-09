@@ -29,6 +29,7 @@ const ProductCreate = {
      try {
         const product =await Product.create({...req.body});
         productCreate=req.body;
+        console.log(productCreate);
         res.redirect('/dashboard/created');
     } catch (error) {
         if((req.body.price).indexOf(",") !== (-1)){
@@ -85,9 +86,9 @@ const ProductCreate = {
           const recibedProduct = await Product.findById(`${req.params._id}`);
           res.send(BaseHtml.baseHTML+formEditProduct(recibedProduct)+BaseHtml.finalHTML);
       }catch (error){
-        console.error(error);
-              res.status(500).send({ message: "There was a problem trying to create a Product Modify" });
-      }
+          console.error(error);
+           res.status(500).send({ message: "There was a problem trying to create a Product Modify" });
+        }
   },
   
 //Update one product
