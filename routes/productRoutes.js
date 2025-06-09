@@ -9,16 +9,15 @@ const ProductController = require('../controllers/productController.js');
 const middlewares = require('../middleware/authMiddleware.js');//Protección de las rutas
 
 //Rutas DashBoard
-router.get('/dashboard/new', ProductController.newProduct,middlewares.verificarSesionMiddleware);//Formulario
-router.post('/dashboard', ProductController.createProduct, middlewares.verificarSesionMiddleware);//Post para crear en Mongo DB
+router.get('/dashboard/new', middlewares.verificarSesionMiddleware, ProductController.newProduct);//Formulario
+router.post('/dashboard', middlewares.verificarSesionMiddleware, ProductController.createProduct);//Post para crear en Mongo DB
 router.get('/dashboard/created', middlewares.verificarSesionMiddleware, ProductController.showProductCreated);//Producto creado
-router.get('/dashboard', ProductController.products, middlewares.verificarSesionMiddleware); //Muestra todos los productos
-router.get('/dashboard/:_id', ProductController.product, middlewares.verificarSesionMiddleware); //devuelve el detalle del producto
-
-router.get('/dashboard/:_id/edit', ProductController.productModify, middlewares.verificarSesionMiddleware);//Muestra el formulario
-router.post('/dashboard/:_id/edit', ProductController.productChanged, middlewares.verificarSesionMiddleware); //Envía el formulario
-router.get('/dashboard/:_id/delete', ProductController.deleteProduct, middlewares.verificarSesionMiddleware);//Muestra el formulario
-router.get('/dashboard/:category/category', ProductController.productsCategoryDashboard, middlewares.verificarSesionMiddleware);//Muestra por categoria
+router.get('/dashboard', middlewares.verificarSesionMiddleware, ProductController.products); //Muestra todos los productos
+router.get('/dashboard/:_id', middlewares.verificarSesionMiddleware, ProductController.product); //devuelve el detalle del producto
+router.get('/dashboard/:_id/edit', middlewares.verificarSesionMiddleware,ProductController.productModify);//Muestra el formulario
+router.post('/dashboard/:_id/edit', ProductController.productChanged); //Envía el formulario
+router.get('/dashboard/:_id/delete', middlewares.verificarSesionMiddleware, ProductController.deleteProduct);//Muestra el formulario
+router.get('/dashboard/:category/category', middlewares.verificarSesionMiddleware, ProductController.productsCategoryDashboard);//Muestra por categoria
 
 //Rutas Pagina principal de productos para clientes
 router.get('/products', ProductController.productsClients); //Muestra todos los productos

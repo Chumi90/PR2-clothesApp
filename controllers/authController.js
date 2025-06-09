@@ -7,17 +7,13 @@ const authCotroller = {
         const mensajeError = req.query.error
         ? (req.query.error === '1' ? 'Contraseña incorrecta.' : 'No estás logado.'): '';
         if (req.session.palabraSecreta) {
-            return res.redirect('/dashboard');
+          return res.redirect('/products/login/user');   
         }
         res.send(BaseHtml.baseHTMLLogin+`<p>${mensajeError}</p>`+BaseHtml.formLoginAdministrator+BaseHtml.finalHTML);
     },
 
     verifyUser (req, res) {
-        res.send(BaseHtml.baseHTMLLogin+BaseHtml.loginVerify);
-    },
-
-    redirectDashBoard (req, res) {
-        res.redirect('/dashboard');
+      res.redirect('/dashboard');
     },
 
     destroySesion (req, res) {

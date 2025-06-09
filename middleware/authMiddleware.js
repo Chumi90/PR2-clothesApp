@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const verificarSesionMiddleware = (req, res, next) => {
-  if (req.session.PASS) {
+  if (req.session.palabraSecreta) {
     next();
   } else {
     res.redirect('/products/login?error=2');
@@ -14,8 +14,7 @@ const verificarSesionMiddleware = (req, res, next) => {
 };
 
 const validarPalabraMiddleware = (req, res, next) => {
-  const palabraCorrecta = process.env.PASS || '';
-
+  const palabraCorrecta = process.env.PASS;
   if (req.body.palabra === palabraCorrecta) {
     req.session.palabraSecreta = req.body.palabra;
     next();

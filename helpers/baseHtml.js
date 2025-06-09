@@ -109,7 +109,7 @@ const baseHTMLProducts =`
          <body style="font-family: Arial; padding: 15px">
          `;
 
-
+/*____________________Blockeo de accesos____________________*/
 const baseHTMLLogin=`
     <!DOCTYPE html>
         <html lang="es">
@@ -136,7 +136,7 @@ const formLoginAdministrator=`
 
 const loginVerify=`
     <h1>Ruta del Perfil (Sesión activa)</h1>
-    <form method="post" action="/logout">
+    <form method="post" action="/">
         <button type="submit">Log Out</button>
     </form>
     `
