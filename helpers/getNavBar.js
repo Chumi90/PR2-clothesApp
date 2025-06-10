@@ -4,7 +4,7 @@
 function navigationBarhtmlDashboard(product){
     let varNavigate = '';
     const initVar=`
-        <nav id="navVar" class="navVar" style="list-style: none">
+        <nav id="navVar" class="navVar" style="list-style: none;" >
         <ul style="list-style-type: none; display: flex; justify-content: center;flex-wrap: wrap; width: 100%;">
         <a href="/dashboard" style="text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
             <li class="navVar" style="width: 100%; text-align: center;">Home</li>
@@ -14,7 +14,6 @@ function navigationBarhtmlDashboard(product){
         <form action="/" method="post" style="text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
             <button type="submit" style="width: 100%; background-color: rgba(0, 0, 255, 0.973); border: none; border-radius: 5px; postition: relative; cursor: pointer;">Salir</button>
         </form>
-        
         </ul>
         </nav>
     `
@@ -34,7 +33,7 @@ function navigationBarhtmlDashboard(product){
 function navigationBarhtmlUser(product){
     let varNavigate = '';
     const initVar=`
-        <nav id="navVar" class="navVar">
+        <nav id="navVar" class="navVar" style="list-style: none;">
         <ul style="list-style-type: none; display: flex; justify-content: center;flex-wrap: wrap; width: 100%;">
         <a href="/" style="text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
             <li class="navVar" style="width: 100%; text-align: center;">Home</li>
