@@ -20,8 +20,6 @@ const app=express();
 
 const cors=require('cors');//requerimos cors permitir que una página web cargada en un dominio pueda acceder a recursos de otro dominio, cuando la política de "mismo origen" del navegador web por defecto no lo permitiría.
 
-
-
 //Require dbConection
 const { dbConnection } = require('./config/bd.js');
 

@@ -8,7 +8,7 @@ const baseHTML =`
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>DashBoard</title>
         </head>
-        <body style="font-family: Arial; padding: 15px">`
+        <body style="font-family: Arial;">`
             
 const finalHTML=`
         </body>
@@ -30,7 +30,7 @@ const formNewProduct=`
                 </li>
                 <li>
                     <label for="image">Introduce la URL de la imagen</label>
-                    <input type="text" id="imageURL" name="image" required>
+                    <input type="text" id="imageURL" name="image" accept="image/*" required>
                 </li>
                 <li>
                     <label for="category">Introduce la categoría del producto: </label>
@@ -106,7 +106,7 @@ const baseHTMLProducts =`
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Products</title>
         </head>
-         <body style="font-family: Arial; padding: 15px">
+         <body style="font-family: Arial;">
          `;
 
 /*____________________Blockeo de accesos____________________*/

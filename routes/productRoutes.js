@@ -1,12 +1,14 @@
 //Routes defines
 
 const express = require('express');
-const router = express.Router();
-const Product = require('../models/Product.js');
 const ProductController = require('../controllers/productController.js');
 
 
+//Protección rutas
 const middlewares = require('../middleware/authMiddleware.js');//Protección de las rutas
+
+//Rutas web
+const router = express.Router();
 
 //Rutas DashBoard
 router.get('/dashboard/new', middlewares.verificarSesionMiddleware, ProductController.newProduct);//Formulario
@@ -26,6 +28,7 @@ router.get('/products/category/:category', ProductController.productsCategoryCli
 
 //Pagina inicial
 router.get('/', ProductController.initial); //Muestra todos los productos
+
 
 /*___________________________________API-JSON___________________________________ */
 

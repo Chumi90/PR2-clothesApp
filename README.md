@@ -51,6 +51,10 @@ Para poder comenzar con el proyecto sedeberán instalar las siguientes dependenc
 - npm install express-session
 - npm install body-parser
 
+- npm install cloudinary
+- npm install multer
+- npm install multer-storage-cloudinary (solo valido para "cloudinary": "1.41.3",)
+
 # Ignorar archivos de carga
 Crear un archivo .env para ignorar los siguientes archivos:
 - node_modules
@@ -188,4 +192,7 @@ En este punto se crean las rutas que podrán visualizar los usuarios.
     NOTA IMPORTANTE: el middleware, siempre debe quedar por detrás de los datos adquiridos por el Controlador de producto si quieres que tu aplicación acceda a la información.
 
     Ejemplo: router.post('/dashboard', middlewares.verificarSesionMiddleware, ProductController.createProduct);//Post para crear en Mongo DB
+
+
+
 

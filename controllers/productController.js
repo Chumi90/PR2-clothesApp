@@ -27,9 +27,8 @@ const ProductCreate = {
   //Create a route to create a new product and upload the product in Mongo db Atlass
   async createProduct(req,res){
      try {
-        const product =await Product.create({...req.body});
-        productCreate=req.body;
-        console.log(productCreate);
+        productCreate=req.body;     
+        await Product.create({...productCreate});        
         res.redirect('/dashboard/created');
     } catch (error) {
         if((req.body.price).indexOf(",") !== (-1)){

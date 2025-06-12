@@ -7,8 +7,6 @@ const authController = require('../controllers/authController.js');
 
 app.get('/products/login', authController.form);
 app.post('/products/login/user', middlewares.validarPalabraMiddleware,authController.verifyUser);
-
-
 app.post('/', authController.destroySesion);
 
 module.exports = {app};
