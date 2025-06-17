@@ -6,7 +6,7 @@ function navigationBarhtmlDashboard(product){
     const initVar=`
         <nav id="navVar" class="navVar" style="list-style: none;" >
         <ul style="list-style-type: none; display: flex; justify-content: center;flex-wrap: wrap; width: 100%;">
-        <a href="/dashboard" style="text-decoration: none;text-decoration: white; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
+        <a href="/dashboard" style="text-decoration: none;color: white; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
             <li class="navVar" style="width: 100%; text-align: center;">Home</li>
         </a>
             `
@@ -20,7 +20,7 @@ function navigationBarhtmlDashboard(product){
 
     for (let category of product) {
         varNavigate +=`
-            <a href="/dashboard/category/${category}" style="text-decoration: none;text-decoration: white; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
+            <a href="/dashboard/category/${category}" style="text-decoration: none;color: white; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
             <li class="navVar" value="${category}" style="width: 100%; text-align: center;">${category}</li>
             </a>
         `
@@ -35,15 +35,15 @@ function navigationBarhtmlUser(product){
     const initVar=`
         <nav id="navVar" class="navVar" style="list-style: none;">
         <ul style="list-style-type: none; display: flex; justify-content: center;flex-wrap: wrap; width: 100%;">
-        <a href="/" style="text-decoration: none; margin: 5px;text-decoration: white; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
+        <a href="/" style="text-decoration: none; margin: 5px;color: white; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
             <li class="navVar" style="width: 100%; text-align: center;">Home</li>
         </a>
             `
     const finalNavigate=`
         <a href="/products" style="text-decoration: none; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
-            <li class="navVar" style="width: 100%;text-decoration: white; text-align: center;">Todos los productos</li>
+            <li class="navVar" style="width: 100%;color: white; text-align: center;">Todos los productos</li>
         </a>
-        <a href="/products/login" style="text-decoration: none;text-decoration: white; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
+        <a href="/products/login" style="text-decoration: none;color: white; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
             <li class="navVar" style="width: 100%; text-align: center;">Login</li>
         </a>
         </ul>
@@ -52,7 +52,7 @@ function navigationBarhtmlUser(product){
     for (let category of product) {
         let ruta=`/products/category/${category}`;
         varNavigate +=`
-            <a href="${ruta}" style="text-decoration: none;text-decoration: white; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
+            <a href="${ruta}" style="text-decoration: none;color: white; margin: 5px; background-color: rgba(0, 0, 255, 0.973); width: 120px; border-radius: 5px;">
             <li class="navVar" value="${category}" style="width: 100%; text-align: center;">${category}</li>
             </a>
         `
